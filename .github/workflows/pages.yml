@@ -1,0 +1,22 @@
+# Copiar para .github/workflows/pages.yml do repositório do SITE (eposmktfilmsia.com.br).
+# O repositório recebe só o conteúdo de site-dist/ (gerado por: python site-src/build.py --prod).
+name: Publicar site
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - uses: actions/deploy-pages@v4
