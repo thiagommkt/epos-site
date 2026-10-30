@@ -105,15 +105,13 @@
   lb.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50) show(i + (dx < 0 ? 1 : -1)); x0 = null; });
 })();
 
-/* cookies: "all" liga Pixel e posts do Instagram; "ess" só o essencial. Escolha fica no navegador. */
+/* cookies: Pixel e posts do Instagram sempre ligados; o aviso só informa e lembra que já foi visto. */
 (function () {
   var box = document.getElementById('cookies');
-  if (!box) return;
   var KEY = 'epos_cookies';
   function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
   function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
-  function apply(v) {
-    if (v !== 'all') return;
+  function apply() {
     if (window.eposPixel) window.eposPixel();
     document.querySelectorAll('.ig[data-ig]').forEach(function (el) {
       if (el.querySelector('iframe')) return;
@@ -124,14 +122,12 @@
       el.innerHTML = ''; el.appendChild(f);
     });
   }
-  var cur = get();
-  if (cur) apply(cur); else box.hidden = false;
+  apply();
+  if (!box) return;
+  if (!get()) box.hidden = false;
   box.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-ck]');
-    if (!b) return;
-    var v = b.getAttribute('data-ck'); set(v); box.hidden = true;
-    if (v === 'all') apply('all'); else if (cur === 'all') location.reload();
-    cur = v;
+    if (!e.target.closest('[data-ck]')) return;
+    set('ok'); box.hidden = true;
   });
   document.querySelectorAll('[data-cookies-open]').forEach(function (a) {
     a.addEventListener('click', function (e) { e.preventDefault(); box.hidden = false; });
