@@ -202,8 +202,10 @@ a.tag:hover{border-color:var(--purple2);color:var(--text)}
 .vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
 .bh{aspect-ratio:404/316;width:100%;max-width:780px;border-radius:12px;overflow:hidden;background:var(--tile);border:1px solid var(--line)}
 .bh iframe{width:100%;height:100%;border:0}
-.bh__link{margin-top:14px}
-.bh__link a{color:var(--text);border-bottom:1px solid var(--line2)}
+.bh--card{display:grid;grid-template-columns:minmax(0,220px) auto;align-items:center;gap:24px;aspect-ratio:auto;max-width:640px;padding:16px;background:var(--card)}
+.bh--card .btn{text-decoration:none}
+.bh--card img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:8px}
+@media (max-width:600px){.bh--card{grid-template-columns:1fr}.bh--card img{max-width:200px}}
 .vids--h{grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))}
 .vids--h:has(>.vid:only-child){grid-template-columns:minmax(0,780px)}
 .vids__label{margin:clamp(20px,3vw,32px) 0 14px}
