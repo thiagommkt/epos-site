@@ -205,6 +205,7 @@ a.tag:hover{border-color:var(--purple2);color:var(--text)}
 .bh__link{margin-top:14px}
 .bh__link a{color:var(--text);border-bottom:1px solid var(--line2)}
 .vids--h{grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))}
+.vids--h:has(>.vid:only-child){grid-template-columns:minmax(0,780px)}
 .vids__label{margin:clamp(20px,3vw,32px) 0 14px}
 .vids__label:first-child{margin-top:0}
 .vids+.vids__label{margin-top:clamp(28px,4vw,44px)}

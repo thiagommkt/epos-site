@@ -26,12 +26,13 @@
   }
 
   // vídeo do YouTube só carrega no clique (página leve)
-  document.querySelectorAll('.vid[data-yt]').forEach(function (box) {
+  document.querySelectorAll('.vid[data-yt],.vid[data-drive]').forEach(function (box) {
     var btn = box.querySelector('button');
     if (!btn) return;
     btn.addEventListener('click', function () {
       var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + box.getAttribute('data-yt') + '?autoplay=1&rel=0';
+      var dr = box.getAttribute('data-drive');
+      f.src = dr ? 'https://drive.google.com/file/d/' + dr + '/preview' : 'https://www.youtube-nocookie.com/embed/' + box.getAttribute('data-yt') + '?autoplay=1&rel=0';
       f.allow = 'autoplay; encrypted-media; picture-in-picture';
       f.allowFullscreen = true;
       f.title = btn.getAttribute('aria-label') || 'Vídeo';
