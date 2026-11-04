@@ -47,6 +47,7 @@ h3{font-size:clamp(19px,1.8vw,24px);line-height:1.2;letter-spacing:-.015em;font-
 .btn--primary:hover{background:var(--purple-hover)}
 .btn--ghost{border-color:var(--line2);color:var(--text)}
 .btn--ghost:hover{border-color:var(--purple2)}
+.sec--paper .btn--primary{color:#fff}
 .sec--paper .btn--ghost{border-color:var(--paper-line);color:var(--ink)}
 .btn svg{width:18px;height:18px}
 .btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
