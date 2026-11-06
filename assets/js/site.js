@@ -118,7 +118,7 @@
       if (el.querySelector('iframe')) return;
       var f = document.createElement('iframe');
       f.src = 'https://www.instagram.com/p/' + el.getAttribute('data-ig') + '/embed/';
-      f.title = 'Carrossel do Farias & Moura no Instagram';
+      f.title = el.getAttribute('data-title') || 'Publicação no Instagram';
       f.loading = 'lazy'; f.scrolling = 'no'; f.setAttribute('allowtransparency', 'true');
       el.innerHTML = ''; el.appendChild(f);
     });
