@@ -250,3 +250,10 @@
   });
   window.addEventListener('pagehide', function () { if (document.visibilityState !== 'hidden') visivel += Date.now() - t0; enviarTempo(); });
 })();
+
+/* CTA fixo do celular some quando o diagnóstico já está na tela */
+(function () {
+  var st = document.getElementById('stick'), alvo = document.querySelector('.quiz, #diagnostico');
+  if (!st || !alvo || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (es) { st.classList.toggle('is-off', es[0].isIntersecting); }, { threshold: 0.15 }).observe(alvo);
+})();
