@@ -334,4 +334,12 @@ button.tag[aria-pressed="true"]{background:var(--purple);border-color:var(--purp
   body{padding-bottom:calc(72px + env(safe-area-inset-bottom))}
   .ck{bottom:calc(84px + env(safe-area-inset-bottom))}
 }
+/* botão flutuante de WhatsApp (link rastreado com a página de origem) */
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:54;display:inline-flex;align-items:center;gap:8px;height:52px;padding:0 18px 0 14px;border-radius:999px;background:#25D366;color:#06210F;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.4);transition:transform .2s ease}
+.wa-float:hover{transform:translateY(-2px)}
+.wa-float:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media (max-width:760px){
+  .wa-float{bottom:calc(84px + env(safe-area-inset-bottom));right:12px;height:48px;padding:0 16px 0 12px}
+  .ck:not([hidden]) ~ .wa-float{bottom:calc(214px + env(safe-area-inset-bottom))}
+}
 .steps--cta .step{align-content:stretch;grid-template-rows:auto auto 1fr auto}
