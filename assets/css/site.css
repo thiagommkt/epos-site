@@ -334,3 +334,4 @@ button.tag[aria-pressed="true"]{background:var(--purple);border-color:var(--purp
   body{padding-bottom:calc(72px + env(safe-area-inset-bottom))}
   .ck{bottom:calc(84px + env(safe-area-inset-bottom))}
 }
+.steps--cta .step{align-content:stretch;grid-template-rows:auto auto 1fr auto}
