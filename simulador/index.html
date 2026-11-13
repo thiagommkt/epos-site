@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador: quanto o seu WhatsApp deixa escapar | Epos</title>
+<!-- 13/11/2026 (Thiago: "uma página só do simulador pra eu compartilhar"). A conta é a mesma da página do Método (bloco 3). -->
+<meta name="description" content="Coloque os seus números e veja, em 30 segundos, quantos contatos, quanta verba de anúncio e quanta receita vão embora todo mês no seu WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Epos">
+<meta property="og:title" content="Quanto o seu WhatsApp deixa escapar por mês?">
+<meta property="og:description" content="Coloque os seus números. Em 30 segundos você vê quanto da sua verba e das suas vendas vai embora sem resposta.">
+<meta property="og:url" content="https://eposmktfilmsia.com.br/simulador/">
+<link rel="canonical" href="https://eposmktfilmsia.com.br/simulador/">
+<meta property="og:image" content="https://eposmktfilmsia.com.br/assets/img/metodo/og-metodo.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico">
+<!-- Meta Pixel Epos — autoConfig OFF antes do init (REGRA #5); nenhum número digitado vai à Meta -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('set','autoConfig',false,'130141280708842');
+fbq('init','130141280708842');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=130141280708842&ev=PageView&noscript=1"/></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0E0E10; --card:#16161A; --tile:#1B1B20;
+  --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.15);
+  --text:#F4F3F7; --muted:#D2D1DA; --dim:#B9B8C4;
+  --purple:#9146FF; --purple2:#B58CFF; --orange:#E06010; --orange2:#FF9A55; --orange-soft:rgba(224,96,16,.13);
+  --fD:'DM Sans',system-ui,sans-serif; --fM:'DM Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--fD);background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(50% 40% at 0% 0%, rgba(145,70,255,.18), transparent 70%),radial-gradient(40% 35% at 100% 100%, rgba(224,96,16,.10), transparent 70%)}
+a{color:inherit}
+.wrap{width:100%;max-width:1060px;margin:0 auto;padding:0 16px}
+h1,h2,h3{text-wrap:balance} p{text-wrap:pretty}
+
+.top{border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--fM);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--purple),#5B1FC2);display:grid;place-items:center;font-family:var(--fD);font-weight:800;font-size:15px;color:#fff;letter-spacing:0}
+.btn-mini{text-decoration:none;font-family:var(--fM);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:transparent;border:1px solid var(--line2);border-radius:999px;padding:8px 12px;cursor:pointer}
+.btn-mini:hover{color:var(--text);border-color:var(--purple)}
+
+.hero{padding:52px 0 8px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;border:1px solid rgba(145,70,255,.4);background:rgba(145,70,255,.1);font-family:var(--fM);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--purple2);margin-bottom:18px}
+h1{font-size:clamp(34px,6vw,64px);line-height:1;letter-spacing:-.04em;font-weight:800;max-width:18ch;margin-bottom:16px}
+h1 em{font-style:normal;color:var(--orange)}
+.sub{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:56ch}
+.sub b{color:var(--text);font-weight:600}
+
+.calc{margin:30px 0 0;display:grid;grid-template-columns:1.05fr 1fr;gap:16px}
+@media (max-width:860px){.calc{grid-template-columns:1fr}}
+.calc-in,.calc-out{border:1px solid var(--line);border-radius:20px;background:var(--card);padding:22px}
+.passo-n{font-family:var(--fM);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple2);margin-bottom:14px}
+.campo{margin-bottom:18px}
+.campo label{display:flex;justify-content:space-between;gap:10px;font-size:15px;color:var(--muted);margin-bottom:8px}
+.campo label output{font-family:var(--fM);color:var(--text);white-space:nowrap}
+.campo input[type=text]{width:100%;min-height:52px;border-radius:12px;border:1px solid var(--line2);background:var(--tile);color:var(--text);font-family:var(--fM);font-size:18px;padding:0 14px;font-variant-numeric:tabular-nums}
+.campo input[type=text]:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 3px rgba(145,70,255,.2)}
+.campo input[type=range]{width:100%;accent-color:var(--purple);height:30px}
+.dica{display:block;font-size:12.5px;color:var(--dim);margin-top:4px}
+.res{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px dashed var(--line)}
+.res span{color:var(--muted);font-size:15px}
+.res b{font-size:22px;letter-spacing:-.02em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.res.forte{border-bottom:none;padding-top:18px}
+.res.forte b{font-size:clamp(32px,5vw,46px);color:var(--orange2)}
+.res.ano b{color:var(--text)}
+.toggle{display:flex;align-items:flex-start;gap:10px;margin-top:14px;font-size:14px;color:var(--muted);cursor:pointer}
+.toggle input{width:18px;height:18px;margin-top:2px;accent-color:var(--orange);flex-shrink:0}
+.frase{margin-top:16px;padding:14px 16px;border-radius:14px;background:var(--orange-soft);border:1px solid rgba(224,96,16,.35);font-size:16px;color:#FFD9C0}
+.frase b{color:#fff}
+
+.saida{margin:26px 0 0;border:1px solid rgba(145,70,255,.35);border-radius:22px;padding:26px;background:linear-gradient(140deg,rgba(145,70,255,.14),var(--card))}
+.saida h2{font-size:clamp(26px,4vw,40px);line-height:1.05;letter-spacing:-.03em;font-weight:800;margin-bottom:12px;max-width:22ch}
+.saida h2 em{font-style:normal;color:var(--orange)}
+.saida p{color:var(--muted);font-size:17px;max-width:62ch}
+.saida p b{color:var(--text)}
+.tres{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 4px}
+@media (max-width:760px){.tres{grid-template-columns:1fr}}
+.tres li{border:1px solid var(--line);border-radius:14px;padding:14px;background:rgba(14,14,16,.5);font-size:15px;color:var(--muted)}
+.tres li b{display:block;color:var(--text);font-size:16px;margin-bottom:4px}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border-radius:14px;font-family:var(--fD);font-weight:700;font-size:16px;border:none;cursor:pointer;text-decoration:none}
+.btn svg{width:18px;height:18px;flex-shrink:0}
+.btn-primary{background:var(--purple);color:#fff;box-shadow:0 14px 34px -14px rgba(145,70,255,.9)}
+.btn-primary:hover{background:#9C58FF}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line2)}
+.btn-ghost:hover{border-color:var(--purple2)}
+.btn:focus-visible,.btn-mini:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media (max-width:520px){.btn-row .btn{width:100%}}
+.nota{font-family:var(--fM);font-size:12px;color:var(--dim);line-height:1.6;margin:22px 0 40px}
+.saida p.nota{font-family:var(--fD);font-size:14px;color:var(--dim);line-height:1.5}
+footer{border-top:1px solid var(--line);padding:22px 0 34px;font-size:13px;color:var(--dim)}
+footer a{color:var(--dim)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Epos, página inicial"><span class="brand-mark">E</span><span>Epos</span></a>
+    <button class="btn-mini" type="button" id="btnCompartilhar">Compartilhar</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Simulador · 30 segundos</div>
+      <h1>Quanto o seu WhatsApp deixa <em>escapar por mês?</em></h1>
+      <p class="sub">Você paga para o cliente chamar. Se ninguém responde rápido, ele fecha com quem respondeu. Coloque <b>os seus números</b> e veja quanto isso custa. A conta é sua, não uma média de mercado.</p>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="calc">
+      <div class="calc-in">
+        <div class="passo-n">1 · Os seus números</div>
+        <div class="campo"><label for="cVerba">Quanto você investe em anúncios por mês <output>R$</output></label><input type="text" inputmode="numeric" id="cVerba" value="5.000" autocomplete="off"></div>
+        <div class="campo"><label for="cLeads">Quantas pessoas chamam no WhatsApp por mês</label><input type="text" inputmode="numeric" id="cLeads" value="100" autocomplete="off"></div>
+        <div class="campo"><label for="cEscapa">De cada 10, quantas ficam sem resposta rápida ou somem <output id="oEscapa">4 de 10</output></label><input type="range" id="cEscapa" min="0" max="10" step="1" value="4"><span class="dica">Conte quem foi respondido no dia seguinte, quem recebeu só "oi, tudo bem?" e quem parou de responder e ninguém retomou.</span></div>
+        <div class="campo"><label for="cFecha">De cada 10 bem atendidas, quantas fecham <output id="oFecha">1 de 10</output></label><input type="range" id="cFecha" min="0" max="10" step="0.5" value="1"></div>
+        <div class="campo" style="margin-bottom:0"><label for="cTicket">Quanto vale, em média, uma venda sua <output>R$</output></label><input type="text" inputmode="numeric" id="cTicket" value="8.000" autocomplete="off"></div>
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <div class="passo-n">2 · O que vai embora</div>
+        <div class="res"><span>Quanto custa cada pessoa que chama</span><b id="rCusto">—</b></div>
+        <div class="res"><span>Pessoas que escapam por mês</span><b id="rEscapam">—</b></div>
+        <div class="res"><span>Verba de anúncio paga por quem escapou</span><b id="rRalo">—</b></div>
+        <div class="res"><span>Vendas que deixam de acontecer</span><b id="rVendas">—</b></div>
+        <div class="res forte"><span>Receita indo embora por mês</span><b id="rMes">—</b></div>
+        <div class="res ano"><span>Em um ano</span><b id="rAno">—</b></div>
+        <label class="toggle"><input type="checkbox" id="cConservador"> Modo conservador: considerar que só metade dessas pessoas fecharia, mesmo bem atendida</label>
+        <p class="frase" id="frase" hidden></p>
+      </div>
+    </div>
+
+    <div class="saida">
+      <h2>Esse dinheiro não precisa <em>ir embora.</em></h2>
+      <p>Ele escapa no mesmo lugar: entre o anúncio e a resposta. É esse buraco que o <b>Método Venda Inevitável</b> fecha, com o anúncio e o atendimento trabalhando juntos:</p>
+      <ul class="tres">
+        <li><b>1. Nós trazemos o cliente</b>Anúncios feitos e acompanhados por nós, medidos por quem agenda e fecha, não por clique.</li>
+        <li><b>2. A IA atende na hora</b>Uma inteligência artificial responde no seu WhatsApp em segundos, a qualquer hora, tira dúvidas e marca a reunião.</li>
+        <li><b>3. O seu time fecha</b>O vendedor recebe o resumo da conversa e só fala com quem está pronto. Quem sumiu é retomado.</li>
+      </ul>
+      <div class="btn-row">
+        <a class="btn btn-primary cta-wa" id="ctaDonna" href="https://wa.me/556190448205" target="_blank" rel="noopener" data-origem="simulador">Ver onde eu estou perdendo
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" id="lnkMetodo" href="/metodo/">Ver como o Método funciona</a>
+      </div>
+      <p class="nota" style="margin:14px 0 0">Diagnóstico gratuito de 20 a 30 minutos com o Thiago. Quem responde no WhatsApp é a Donna, a IA de atendimento da Epos: ela já recebe a sua conta e marca o horário.</p>
+    </div>
+
+    <p class="nota">Como a conta é feita: custo de cada pessoa = verba ÷ pessoas que chamam · pessoas que escapam = pessoas que chamam × quantas escapam · verba paga por quem escapou = verba × quantas escapam · vendas perdidas = pessoas que escapam × quantas fecham · receita = vendas perdidas × valor da venda. Os números digitados ficam no seu aparelho e no nosso registro de visitas; nada é enviado à Meta.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Epos · <a href="/">eposmktfilmsia.com.br</a> · <a href="/privacidade/">Privacidade</a></div>
+</footer>
+
+<script>
+(function(){
+  var SB_URL = 'https://phszzzwqkujmmfregtsj.supabase.co';
+  var SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBoc3p6endxa3VqbW1mcmVndHNqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNTg0NzgsImV4cCI6MjA5MDgzNDQ3OH0.E8WPvaVQuemNIbL5SeHqpX1Kv-00E7tK6l8fzPxqeJA';
+  var DONNA = '556190448205';
+  var CAMINHO = '/simulador/';
+  var p = new URLSearchParams(location.search);
+  var UTM = {};
+  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id','ad_id','adset_id','placement'].forEach(function(k){ UTM[k] = p.get(k) || ''; });
+  // Link por convidado, igual ao Método: /simulador/?c=nome-da-empresa
+  var convidado = (p.get('c') || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
+  try { if (convidado) localStorage.setItem('_lp_convidado', convidado); else if (!UTM.utm_source) convidado = localStorage.getItem('_lp_convidado') || ''; } catch(e){}
+  if (convidado && !UTM.utm_source) { UTM.utm_source = 'convite'; UTM.utm_medium = UTM.utm_medium || 'parceiro'; UTM.utm_content = UTM.utm_content || convidado; }
+  var $ = function(id){ return document.getElementById(id); };
+
+  // ── registro no nosso banco (lp_events, lp_slug 'site', mesma sessão do site e do Método) ──
+  var sid = null;
+  try { sid = localStorage.getItem('_lp_sid'); } catch(e){}
+  if (!sid) { sid = (self.crypto && crypto.randomUUID) ? crypto.randomUUID() : Math.random().toString(36).slice(2) + Date.now().toString(36); try { localStorage.setItem('_lp_sid', sid); } catch(e){} }
+  function track(tipo, extra){
+    if (navigator.webdriver) return;
+    var corpo = Object.assign({ lp_slug: 'site', event_type: tipo, session_id: sid, referrer: (document.referrer || '').slice(0, 490) }, UTM, extra || {});
+    Object.keys(corpo).forEach(function(k){ if (corpo[k] === '') delete corpo[k]; });
+    fetch(SB_URL + '/rest/v1/lp_events', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json', 'apikey': SB_ANON, 'Authorization': 'Bearer ' + SB_ANON }, body: JSON.stringify(corpo) }).catch(function(){});
+  }
+  var _equipe = false; try { _equipe = localStorage.getItem('_epos_equipe') === '1' || localStorage.getItem('_lp_equipe') === '1'; } catch(e){}
+  if (p.get('equipe') === '1') { _equipe = true; try { localStorage.setItem('_epos_equipe', '1'); } catch(e){} track('equipe', { step_name: 'simulador' }); }
+  track('pageview', { step_name: CAMINHO, answer: document.title.slice(0, 280), user_agent: (navigator.userAgent || '').slice(0, 390), viewport: innerWidth + 'x' + innerHeight });
+  var inicio = Date.now();
+  addEventListener('pagehide', function(){ var d = Math.round((Date.now() - inicio) / 1000); if (d >= 2) track('time_spent', { step_name: CAMINHO, duration_s: Math.min(d, 7200) }); });
+
+  // ── calculadora (mesma conta do bloco 3 do Método) ──
+  var reais = function(v){ return 'R$ ' + Math.round(v).toLocaleString('pt-BR'); };
+  var num = function(id){ var v = parseFloat(String($(id).value).replace(/\./g, '').replace(',', '.')); return isNaN(v) || v < 0 ? 0 : v; };
+  function formatar(id){ var v = num(id); $(id).value = v ? Math.round(v).toLocaleString('pt-BR') : ''; }
+  var ultimo = null, mexeu = false, tGravar = null;
+  function calcular(){
+    var verba = num('cVerba'), leads = num('cLeads'), escapa = parseFloat($('cEscapa').value) / 10, fecha = parseFloat($('cFecha').value) / 10, ticket = num('cTicket');
+    var cons = $('cConservador').checked ? 0.5 : 1;
+    $('oEscapa').textContent = String($('cEscapa').value).replace('.', ',') + ' de 10';
+    $('oFecha').textContent = String($('cFecha').value).replace('.', ',') + ' de 10';
+    var custo = leads ? verba / leads : 0, escapam = leads * escapa, ralo = verba * escapa, vendas = escapam * fecha * cons, mes = vendas * ticket;
+    $('rCusto').textContent = leads ? reais(custo) : '—';
+    $('rEscapam').textContent = Math.round(escapam).toLocaleString('pt-BR');
+    $('rRalo').textContent = reais(ralo);
+    $('rVendas').textContent = (Math.round(vendas * 10) / 10).toLocaleString('pt-BR');
+    $('rMes').textContent = reais(mes);
+    $('rAno').textContent = reais(mes * 12);
+    var fr = $('frase');
+    if (mes > 0) {
+      fr.innerHTML = 'Todo mês, <b>' + Math.round(escapam).toLocaleString('pt-BR') + ' pessoas</b> que você pagou para chamar vão embora sem a resposta certa. Em um ano, são <b>' + reais(mes * 12) + '</b> em vendas que ficaram com outra empresa.';
+      fr.hidden = false;
+    } else fr.hidden = true;
+    ultimo = { verba: Math.round(verba), contatos: Math.round(leads), escapam_10: +$('cEscapa').value, fecham_10: +$('cFecha').value, ticket: Math.round(ticket), conservador: cons < 1, perda_mes: Math.round(mes) };
+    atualizarCta();
+    if (mexeu) { clearTimeout(tGravar); tGravar = setTimeout(gravarSimulacao, 2500); }
+  }
+  var gravadas = {};
+  function gravarSimulacao(){
+    if (!ultimo || _equipe) return;
+    var s = JSON.stringify(ultimo);
+    if (gravadas[s]) return; gravadas[s] = 1;
+    track('step_answer', { step_name: 'simulador', answer: s.slice(0, 300) });
+  }
+  ['cVerba','cLeads','cTicket'].forEach(function(id){
+    $(id).addEventListener('input', function(){ mexeu = true; calcular(); });
+    $(id).addEventListener('blur', function(){ formatar(id); calcular(); });
+  });
+  ['cEscapa','cFecha','cConservador'].forEach(function(id){
+    $(id).addEventListener('input', function(){ mexeu = true; calcular(); });
+    $(id).addEventListener('change', function(){ mexeu = true; calcular(); });
+  });
+
+  // ── WhatsApp da Donna: já leva a conta da pessoa ──
+  function tagUtm(){
+    var u = { utm_source: UTM.utm_source || 'simulador', utm_medium: UTM.utm_medium || 'pagina', utm_campaign: UTM.utm_campaign || 'simulador' };
+    if (UTM.utm_content) u.utm_content = UTM.utm_content;
+    return '[' + Object.keys(u).map(function(k){ return k + '=' + u[k]; }).join('&') + ']';
+  }
+  function atualizarCta(){
+    var texto = 'Oi, Donna! Fiz o simulador do site';
+    if (ultimo && ultimo.perda_mes > 0) texto += ': estou deixando escapar cerca de ' + reais(ultimo.perda_mes) + ' por mês';
+    texto += '. Quero o diagnóstico. ';
+    $('ctaDonna').href = 'https://wa.me/' + DONNA + '?text=' + encodeURIComponent(texto + tagUtm());
+  }
+  // o link do Método leva a mesma origem
+  (function(){ var q = new URLSearchParams(); Object.keys(UTM).forEach(function(k){ if (UTM[k]) q.set(k, UTM[k]); }); if (!q.get('utm_source')) { q.set('utm_source', 'simulador'); q.set('utm_medium', 'pagina'); } $('lnkMetodo').href = '/metodo/?' + q.toString(); })();
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('.cta-wa, #lnkMetodo'); if (!a) return;
+    gravarSimulacao();
+    track('cta_click', { step_name: a.id === 'lnkMetodo' ? 'simulador-metodo' : 'simulador-donna', answer: CAMINHO });
+    if (a.classList.contains('cta-wa') && typeof fbq === 'function') fbq('track', 'Contact');   // sem nenhum dado do visitante
+  });
+
+  // ── compartilhar ──
+  $('btnCompartilhar').addEventListener('click', function(){
+    var url = location.origin + CAMINHO;
+    var dados = { title: 'Quanto o seu WhatsApp deixa escapar por mês?', text: 'Coloque os seus números e veja em 30 segundos:', url: url };
+    track('cta_click', { step_name: 'simulador-compartilhar', answer: CAMINHO });
+    if (navigator.share) { navigator.share(dados).catch(function(){}); return; }
+    var feito = function(){ $('btnCompartilhar').textContent = 'Link copiado'; setTimeout(function(){ $('btnCompartilhar').textContent = 'Compartilhar'; }, 2200); };
+    if (navigator.clipboard) navigator.clipboard.writeText(url).then(feito).catch(function(){ prompt('Copie o link:', url); });
+    else prompt('Copie o link:', url);
+  });
+
+  calcular();
+})();
+</script>
+</body>
+</html>
