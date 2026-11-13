@@ -144,26 +144,15 @@ h1 em{font-style:normal;color:var(--orange)}
 .toggle input{width:18px;height:18px;accent-color:var(--orange)}
 .calc-nota{margin-top:14px}
 
-/* 4 como funciona (13/11: "não entenderam como o método funciona" → 3 passos + o mesmo cliente das 21h47, agora com o Método) */
-.tres-passos{margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-@media (max-width:860px){.tres-passos{grid-template-columns:1fr}}
-.tp{border:1px solid var(--line);border-radius:20px;padding:24px;background:var(--card)}
-.tp .n{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--purple);color:#fff;font-family:var(--fM);font-size:17px;margin-bottom:14px}
-.tp h3{font-size:22px}
-.tp p{color:var(--muted);font-size:16px}
-.depois-titulo{margin-top:50px;font-size:clamp(20px,2.4vw,26px);font-weight:700;letter-spacing:-.01em;max-width:40ch}
-.tl.bom::before{background:var(--green);box-shadow:0 0 0 4px rgba(31,175,90,.18)}
-.tl.bom time{color:#7BE0A6}
-/* 7 lista completa recolhida (13/11) */
-details.tudo{margin-top:26px}
-details.tudo > summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 20px;border-radius:14px;border:1px solid var(--line2);font-weight:700;font-size:15px}
-details.tudo > summary::-webkit-details-marker{display:none}
-details.tudo > summary::after{content:"+";font-family:var(--fM);color:var(--purple2);font-size:18px}
-details.tudo[open] > summary::after{content:"–"}
-details.tudo > summary:hover{border-color:var(--purple2)}
-details.tudo > summary:focus-visible{outline:2px solid #fff;outline-offset:3px}
-.resumo-tudo{margin-top:18px;font-size:18px;color:var(--muted);max-width:62ch}
-.resumo-tudo b{color:var(--text);font-weight:600}
+/* 4 ciclo */
+.ciclo{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;counter-reset:passo}
+@media (max-width:860px){.ciclo{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:460px){.ciclo{grid-template-columns:1fr}}
+.passo{position:relative;border:1px solid var(--line);border-radius:16px;padding:18px;background:var(--card);counter-increment:passo}
+.passo::before{content:counter(passo,decimal-leading-zero);font-family:var(--fM);font-size:12px;color:var(--purple2);display:block;margin-bottom:10px}
+.passo.volta{border-color:rgba(224,96,16,.45);background:linear-gradient(140deg,var(--orange-soft),var(--card))}
+.passo.volta::before{color:var(--orange2)}
+.passo p{color:var(--muted);font-size:14px}
 
 /* 5 duas IAs */
 .duas{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -398,11 +387,11 @@ html.apresentacao .rev{opacity:1;transform:none}
   <div class="wrap">
     <div class="vagas" id="seloVagas" hidden><i></i><span id="txtVagas"></span></div>
     <h1>Você só não vende<br>se <em>não quiser.</em></h1>
-    <p class="hero-sub"><b>Nós trazemos o cliente pelo anúncio. Uma inteligência artificial atende no seu WhatsApp em segundos, a qualquer hora, e marca a reunião.</b> O seu time só fala com quem está pronto para comprar, e ninguém que chamou fica esquecido.</p>
+    <p class="hero-sub">O Método Venda Inevitável é a <b>estrutura de vendas completa, potencializada por inteligência artificial</b>. O anúncio traz a pessoa certa. A IA não só atende em segundos: <b>trata, qualifica, quebra objeções e traz argumentos de fechamento.</b> Outra IA audita cada conversa, e o seu time só fala com quem está pronto para comprar.</p>
     <div class="btn-row">
       <a class="btn btn-primary cta-wa" href="#proximo" data-origem="abertura">Agendar diagnóstico
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="btn btn-ghost" href="#metodo">Ver como funciona</a>
+      <a class="btn btn-ghost" href="#hoje">Ver como funciona</a>
     </div>
   </div>
 </section>
@@ -414,7 +403,7 @@ html.apresentacao .rev{opacity:1;transform:none}
     <div class="alerta-mercado">O que acontece hoje na maioria das empresas que anunciam</div>
     <h2 style="max-width:none">Você paga pelo clique.<br><em>O cliente some na conversa.</em></h2>
     <div class="pixel-cego rev"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path d="M3 3l18 18"/></svg></div>
-      <p><b>A Meta não sabe quem fez uma reunião com você.<br>Não sabe quem fechou.</b><br><span>Sem esse dado, ela continua tentando adivinhar e entrega o seu anúncio para quem clica, não para quem compra. É assim na maioria das agências e gestores de tráfego.</span></p></div>
+      <p><b>Seu pixel não sabe quem fez uma reunião com você.<br>Não sabe quem fechou.</b><br><span>Sem esse dado, a Meta continua tentando adivinhar e entrega o seu anúncio para quem clica, não para quem compra. É assim na maioria das agências e gestores de tráfego.</span></p></div>
     <p class="lead rev" style="margin-top:34px">O caminho de um lead, num dia comum, na maioria das empresas que anunciam:</p>
     <div class="timeline rev">
       <div class="tl"><time>21h47</time><p>Ele clica no seu anúncio e manda: “Oi, queria saber mais”.</p></div>
@@ -462,24 +451,20 @@ html.apresentacao .rev{opacity:1;transform:none}
 </section>
 
 <!-- 4 COMO PODE SER -->
-<section class="bloco" id="metodo" data-titulo="Como funciona">
+<section class="bloco" id="metodo" data-titulo="O Método">
   <div class="wrap">
-    <div class="eyebrow"><span class="n">04</span><b>Como funciona</b></div>
-    <h2>Três passos. <em>Nenhum cliente esquecido.</em></h2>
-    <p class="lead rev">Nós cuidamos do anúncio e do atendimento juntos. O seu time entra na hora de fechar.</p>
-    <div class="tres-passos rev">
-      <div class="tp"><div class="n">1</div><h3>Nós trazemos o cliente</h3><p>Fazemos e acompanhamos os seus anúncios no Instagram, no Facebook e no Google. Eles são medidos por quem marca reunião e fecha, não por quem só clica.</p></div>
-      <div class="tp"><div class="n">2</div><h3>A IA atende e marca a reunião</h3><p>Quando a pessoa chama no WhatsApp, uma inteligência artificial treinada com o seu negócio responde em segundos, a qualquer hora. Tira as dúvidas, responde as objeções e marca na sua agenda.</p></div>
-      <div class="tp"><div class="n">3</div><h3>O seu time fecha</h3><p>O vendedor recebe o resumo da conversa antes da reunião. Uma segunda IA lê todas as conversas e avisa quem precisa ser retomado e o que dizer.</p></div>
-    </div>
-    <p class="depois-titulo rev">Lembra do cliente das 21h47? Com o Método, o dia dele é assim:</p>
-    <div class="timeline rev">
-      <div class="tl bom"><time>21h47</time><p>Ele clica no seu anúncio e manda: “Oi, queria saber mais”.</p></div>
-      <div class="tl bom"><time>21h47</time><p>A IA responde em segundos, já sabendo de qual anúncio ele veio e o que ele procura.</p></div>
-      <div class="tl bom"><time>21h55</time><p>Ele tirou as dúvidas, ouviu uma boa resposta para “é caro?” e marcou o horário na sua agenda. Recebe um lembrete antes.</p></div>
-      <div class="tl bom"><time>No dia seguinte</time><p>O seu vendedor entra na reunião com o resumo da conversa na mão. Não começa do zero.</p></div>
-      <div class="tl bom"><time>Se ele some</time><p>A segunda IA percebe e sugere a mensagem certa para retomar. Ninguém fica esquecido.</p></div>
-      <div class="tl bom"><time>Fim do mês</time><p>Você vê qual anúncio virou contrato. E os anúncios passam a encontrar mais gente parecida com quem comprou.</p></div>
+    <div class="eyebrow"><span class="n">04</span><b>Como pode ser</b></div>
+    <h2>Um ciclo fechado, do anúncio <em>ao contrato.</em></h2>
+    <p class="lead rev">Cada etapa conversa com a próxima. E o resultado volta para o anúncio, que fica melhor a cada venda.</p>
+    <div class="ciclo rev">
+      <div class="passo"><h3>Anúncio certo</h3><p>Benchmark de toda a Biblioteca de Anúncios e campanhas otimizadas por quem agenda e fecha, não por clique.</p></div>
+      <div class="passo"><h3>Formulário, WhatsApp ou Landing Page</h3><p>O lead chega já respondendo as perguntas que importam.</p></div>
+      <div class="passo"><h3>IA atende em segundos</h3><p>24 horas, com a base do seu negócio e a ficha do lead.</p></div>
+      <div class="passo"><h3>Agenda sozinha</h3><p>Marca na agenda do especialista e lembra o lead antes.</p></div>
+      <div class="passo"><h3>Seu vendedor entra</h3><p>Recebe a ficha completa e só fala com quem está pronto.</p></div>
+      <div class="passo"><h3>O Analista audita</h3><p>Lê 100% das conversas e diz o próximo passo de cada lead.</p></div>
+      <div class="passo"><h3>Painel ao vivo</h3><p>Você vê o que vende, o que trava e quem está escapando.</p></div>
+      <div class="passo volta"><h3>A Meta aprende</h3><p>Os dados de quem fechou deixam o público dos anúncios mais assertivo: a Meta encontra mais pessoas parecidas com quem compra.</p></div>
     </div>
   </div>
 </section>
@@ -489,7 +474,7 @@ html.apresentacao .rev{opacity:1;transform:none}
   <div class="wrap">
     <div class="eyebrow"><span class="n">05</span><b>Duas inteligências artificiais próprias</b></div>
     <h2 style="max-width:none">Uma atende.<br><em>A outra audita tudo.</em></h2>
-    <p class="lead rev">As duas são montadas com a base de conhecimento do <b>seu</b> negócio. Não é robô de menu (“digite 1”), e não é uma IA genérica.</p>
+    <p class="lead rev">As duas são modelos próprios, montados com a base de conhecimento do <b>seu</b> negócio. Não é robô de menu (“digite 1”), e não é uma IA genérica.</p>
     <div class="duas rev">
       <div class="ia atende">
         <div class="tag">IA de atendimento</div>
@@ -559,9 +544,6 @@ html.apresentacao .rev{opacity:1;transform:none}
     <div class="eyebrow"><span class="n">07</span><b>Tudo o que o sistema faz</b></div>
     <h2 style="max-width:none">Não é uma ferramenta.<br><em>É a operação inteira.</em></h2>
     <p class="lead rev">Tudo o que está aqui está rodando hoje, em clientes reais.</p>
-    <p class="resumo-tudo rev">Em resumo: <b>anúncio, atendimento por IA, agenda, CRM, retomada de quem some, relatório de vendas e proteção do seu número</b>, num lugar só.</p>
-    <details class="tudo">
-    <summary>Ver a lista completa do que está incluído</summary>
     <div class="grupos">
 
       <div class="grupo gestor rev"><div class="num">VISÃO DO GESTOR</div><h3>Você vê tudo o que acontece no seu comercial</h3><p>Sem depender do que o vendedor conta.</p>
@@ -682,9 +664,7 @@ html.apresentacao .rev{opacity:1;transform:none}
           <li>Consentimento no formulário, páginas de privacidade e de exclusão de dados</li>
           <li>Alertas de erro e verificação diária do sistema</li>
         </ul></div>
-    </div>
-    </details>
-    <div class="grupos">
+
       <div class="grupo largo rev">
         <h3>Algumas telas <span class="fonte" style="font-size:12px;margin-left:8px">clique para ampliar</span></h3>
         <div class="prints-duplos">
