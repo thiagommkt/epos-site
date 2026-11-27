@@ -138,14 +138,14 @@
 /* Origem da chegada (27/11/2026): quem entra por anúncio ou pelo Google Meu Negócio mantém essa origem nos botões
    do diagnóstico e do WhatsApp. utm_content, m e ct continuam dizendo a página e o botão. */
 (function () {
-  var KEY = 'epos_chegada', CAMPOS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_id', 'gclid'];
+  var KEY = 'epos_chegada', CAMPOS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_id', 'gclid', 'gbraid', 'wbraid'];   // gbraid/wbraid: clique do Google no iPhone (27/11)
   var p = new URLSearchParams(location.search), chegada = null;
-  var fonte = p.get('utm_source') || (p.get('gclid') ? 'google' : '');
+  var fonte = p.get('utm_source') || (p.get('gclid') || p.get('gbraid') || p.get('wbraid') ? 'google' : '');
   if (fonte && fonte !== 'site') {
     chegada = {};
     CAMPOS.forEach(function (k) { var v = p.get(k); if (v) chegada[k] = v.slice(0, 200); });
     chegada.utm_source = fonte.slice(0, 100);
-    if (!chegada.utm_medium && chegada.gclid) chegada.utm_medium = 'cpc';
+    if (!chegada.utm_medium && (chegada.gclid || chegada.gbraid || chegada.wbraid)) chegada.utm_medium = 'cpc';
     try { sessionStorage.setItem(KEY, JSON.stringify(chegada)); } catch (e) {}
   } else {
     try { chegada = JSON.parse(sessionStorage.getItem(KEY)); } catch (e) {}
@@ -191,6 +191,10 @@
   var LIM = { utm_source: 100, utm_medium: 100, utm_campaign: 200, utm_content: 200, utm_term: 200, utm_id: 40, ad_id: 40, adset_id: 40, placement: 60 };
   var utms = {};
   Object.keys(LIM).forEach(function (k) { var v = p.get(k); if (v) utms[k] = v.slice(0, LIM[k]); });
+  // 27/11 (Thiago: rastreio do Google Ads): o anúncio do Google chega só com o código do clique, sem UTM. A visita fica marcada
+  // como anúncio do Google e guarda o código (gclid; no iPhone gbraid/wbraid, na mesma coluna).
+  var clique = p.get('gclid') || p.get('gbraid') || p.get('wbraid');
+  if (clique) { utms.gclid = clique.slice(0, 200); if (!utms.utm_source) { utms.utm_source = 'google'; utms.utm_medium = utms.utm_medium || 'cpc'; } }
   var caminho = (location.pathname || '/').slice(0, 40);
 
   function track(tipo, extra) {
