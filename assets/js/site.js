@@ -135,6 +135,43 @@
   });
 })();
 
+/* Origem da chegada (27/11/2026): quem entra por anúncio ou pelo Google Meu Negócio mantém essa origem nos botões
+   do diagnóstico e do WhatsApp. utm_content, m e ct continuam dizendo a página e o botão. */
+(function () {
+  var KEY = 'epos_chegada', CAMPOS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_id', 'gclid'];
+  var p = new URLSearchParams(location.search), chegada = null;
+  var fonte = p.get('utm_source') || (p.get('gclid') ? 'google' : '');
+  if (fonte && fonte !== 'site') {
+    chegada = {};
+    CAMPOS.forEach(function (k) { var v = p.get(k); if (v) chegada[k] = v.slice(0, 200); });
+    chegada.utm_source = fonte.slice(0, 100);
+    if (!chegada.utm_medium && chegada.gclid) chegada.utm_medium = 'cpc';
+    try { sessionStorage.setItem(KEY, JSON.stringify(chegada)); } catch (e) {}
+  } else {
+    try { chegada = JSON.parse(sessionStorage.getItem(KEY)); } catch (e) {}
+  }
+  if (!chegada) return;
+  function levar(url) {
+    var u;
+    try { u = new URL(url, location.href); } catch (e) { return null; }
+    if (/quiz-epos\.html$/.test(u.pathname)) {
+      CAMPOS.forEach(function (k) { if (chegada[k]) u.searchParams.set(k, chegada[k]); else u.searchParams.delete(k); });
+      return u.toString();
+    }
+    if (u.hostname === 'lp.eposmktfilmsia.com.br' && u.pathname === '/wa') {
+      u.searchParams.set('src', chegada.utm_source);
+      u.searchParams.set('c', chegada.utm_campaign || chegada.utm_medium || 'sem-campanha');
+      return u.toString();
+    }
+    return null;
+  }
+  document.querySelectorAll('a[href*="quiz-epos.html"],a[href*="/wa?"]').forEach(function (a) {
+    var n = levar(a.getAttribute('href')); if (n) a.setAttribute('href', n);
+  });
+  var qf = document.querySelector('.quiz iframe');
+  if (qf) { var nq = levar(qf.getAttribute('src')); if (nq) qf.setAttribute('src', nq); }
+})();
+
 /* Rastreamento no nosso banco (lp_events, lp_slug 'site'; 03/11/2026): visitas, páginas, até onde leram a home, cliques, tempo e origem.
    Nada disso vai à Meta. O quadro do quiz e os botões do diagnóstico levam o mesmo identificador (?sid=): site → raio-X → lead é a mesma pessoa.
    ?equipe=1 marca o aparelho como equipe (as visitas dele ficam fora da conta no painel). */

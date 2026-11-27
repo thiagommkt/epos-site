@@ -344,3 +344,40 @@ button.tag[aria-pressed="true"]{background:var(--purple);border-color:var(--purp
   .ck:not([hidden]) ~ .wa-float{bottom:calc(214px + env(safe-area-inset-bottom))}
 }
 .steps--cta .step{align-content:stretch;grid-template-rows:auto auto 1fr auto}
+
+/* artigos do blog (26/11): capa, resumo, desenho sob subtítulo, atenção, chamada e imagens */
+.post-row--capa{grid-template-columns:260px 150px 1fr}
+.post-row--capa img{width:100%;height:auto;border-radius:12px}
+@media (max-width:700px){.post-row--capa{grid-template-columns:1fr}}
+.artigo .page-hero .wrap,.artigo .sec .wrap{max-width:940px}
+.art-capa{display:block;width:100%;height:auto;border-radius:18px;margin-top:30px;border:1px solid var(--line)}
+.artigo .prose{margin:0 auto}
+.art-resumo{border:1px solid rgba(181,140,255,.35);background:linear-gradient(135deg,rgba(91,52,184,.22),rgba(91,52,184,.06));border-radius:16px;padding:24px 26px;margin-bottom:34px}
+.art-resumo strong,.art-atencao strong{display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--purple2);margin-bottom:10px}
+.prose .art-resumo p,.prose .art-atencao p{margin:0;color:var(--text)}
+.artigo .prose h2{text-align:center;text-wrap:balance}
+.art-vetor{margin:-4px 0 22px;display:flex;justify-content:center}
+.art-vetor svg{max-width:100%;height:auto;fill:none;stroke:var(--text);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.art-vetor .o{stroke:var(--orange)}
+.art-vetor .l{stroke:var(--purple);stroke-width:2}
+.art-atencao{border-left:4px solid var(--orange);background:rgba(224,96,16,.10);border-radius:0 14px 14px 0;padding:20px 24px;margin:26px 0 30px}
+.art-atencao strong{color:var(--orange2)}
+.art-chamada{background:var(--paper);color:var(--ink);border-radius:18px;padding:30px;margin:40px 0;text-align:center}
+.prose .art-chamada strong{display:block;color:var(--ink);font-size:25px;line-height:1.25;margin-bottom:10px}
+.prose .art-chamada p{color:var(--ink2);margin-bottom:20px}
+.prose .art-chamada a.btn{color:#fff}
+.art-fig{margin:36px 0}
+.art-fig img{display:block;width:100%;height:auto;border-radius:16px}
+.art-fig figcaption{font-size:15px;margin-top:10px;text-align:center}
+
+/* página Epos AI */
+.steps--ico .ico{width:56px;height:56px;fill:none;stroke:var(--text);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:6px}
+.steps--ico .ico .o{stroke:var(--orange)}
+.tela{margin:0 0 clamp(36px,5vw,64px)}
+.tela img{display:block;width:100%;height:auto;border-radius:16px;background:var(--ink);box-shadow:0 18px 44px rgba(14,14,16,.22)}
+.tela figcaption{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:14px;font-size:15px;color:var(--ink2)}
+.tela figcaption b{color:var(--ink)}
+.tela-par{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:clamp(24px,5vw,70px);align-items:center}
+.tela-par h3{font-size:clamp(24px,3vw,34px);margin-bottom:16px}
+.tela-par p{color:var(--ink2);margin-bottom:14px;max-width:46ch}
+@media (max-width:800px){.tela-par{grid-template-columns:1fr}}
