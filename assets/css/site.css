@@ -381,3 +381,8 @@ button.tag[aria-pressed="true"]{background:var(--purple);border-color:var(--purp
 .tela-par h3{font-size:clamp(24px,3vw,34px);margin-bottom:16px}
 .tela-par p{color:var(--ink2);margin-bottom:14px;max-width:46ch}
 @media (max-width:800px){.tela-par{grid-template-columns:1fr}}
+.cards-art{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.card-art{text-decoration:none;display:block}
+.card-art img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);margin-bottom:14px}
+.card-art:hover h3{color:var(--purple2)}
+@media (max-width:760px){.cards-art{grid-template-columns:1fr}}
